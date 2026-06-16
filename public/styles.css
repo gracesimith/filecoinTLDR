@@ -1,0 +1,390 @@
+:root {
+  color-scheme: light;
+  --ink: #0f2c23;
+  --ink-soft: rgba(15, 44, 35, 0.68);
+  --line: rgba(15, 44, 35, 0.14);
+  --page: #fbfff2;
+  --band: #f4fbef;
+  --mint: #dce8a6;
+  --blue: #e7e8f3;
+  --leaf: #204d3d;
+  --lime: #e2fea5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 18px 0 34px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.hero__image {
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #edf2f2;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.hero__copy {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--mint);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  max-width: 9ch;
+  font-size: clamp(3rem, 9vw, 5.6rem);
+  line-height: 0.9;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: clamp(1.45rem, 4vw, 2.2rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 1.15rem;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.hero__copy > p:not(.eyebrow) {
+  max-width: 34rem;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.status-line {
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(15, 44, 35, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.44);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.mechanic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.mechanic div,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--band);
+}
+
+.mechanic div {
+  min-height: 138px;
+  padding: 18px;
+}
+
+.mechanic span {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 16px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--lime);
+  font-weight: 900;
+}
+
+.mechanic strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.12rem;
+}
+
+.mechanic p {
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(260px, 0.7fr) minmax(320px, 0.9fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.panel {
+  min-height: 470px;
+  padding: 20px;
+}
+
+.panel__head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid rgba(15, 44, 35, 0.18);
+  border-radius: 8px;
+  background: #fffef8;
+  color: var(--ink);
+  outline: none;
+}
+
+input {
+  height: 46px;
+  padding: 0 12px;
+}
+
+textarea {
+  min-height: 170px;
+  resize: vertical;
+  padding: 12px;
+  line-height: 1.45;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--leaf);
+  box-shadow: 0 0 0 3px rgba(32, 77, 61, 0.12);
+}
+
+button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 850;
+}
+
+button:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 6px;
+  background: var(--ink);
+  color: var(--lime);
+}
+
+.secondary {
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid rgba(15, 44, 35, 0.18);
+  background: #fffef8;
+  color: var(--ink);
+}
+
+.receipt {
+  background: var(--blue);
+}
+
+.receipt__empty {
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+  border: 1px dashed rgba(15, 44, 35, 0.22);
+  border-radius: 8px;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.receipt__body {
+  display: grid;
+  gap: 16px;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+dl div {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(15, 44, 35, 0.12);
+}
+
+dt {
+  color: var(--ink-soft);
+}
+
+dd {
+  margin: 0;
+  font-weight: 850;
+}
+
+code {
+  display: block;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(15, 44, 35, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+  padding: 14px;
+  color: var(--leaf);
+  line-height: 1.5;
+}
+
+.reveal {
+  margin-top: 16px;
+  border-radius: 8px;
+  background: #fffef8;
+  padding: 16px;
+}
+
+.reveal h3 {
+  margin: 8px 0 10px;
+}
+
+.reveal p {
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.reveal small {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 10;
+  min-width: min(420px, calc(100vw - 32px));
+  transform: translateX(-50%) translateY(18px);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--lime);
+  padding: 12px 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .workspace,
+  .mechanic {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy,
+  .hero__image {
+    min-height: 280px;
+  }
+
+  .panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 10px;
+  }
+
+  .hero__copy,
+  .panel,
+  .mechanic div {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+}

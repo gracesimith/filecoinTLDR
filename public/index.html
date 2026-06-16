@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filecoin Dead Drop</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero__image">
+          <img
+            src="https://ennlvrjxpqexvgfhfiaw.supabase.co/storage/v1/object/public/media/hackathon-banners/filecointldr-builder-challenge-i/57dda3c6-a15b-4ffd-bb76-9db3ec9480b1.jpg"
+            alt="FilecoinTLDR Builder Challenge banner"
+          />
+        </div>
+        <div class="hero__copy">
+          <p class="eyebrow">FilecoinTLDR Builder Challenge</p>
+          <h1>Filecoin Dead Drop</h1>
+          <p>
+            Seal a tiny clue into Filecoin storage. The PieceCID becomes the dead-drop
+            key another player uses to reveal it.
+          </p>
+          <div class="status-line" id="modeStatus">Checking storage mode...</div>
+        </div>
+      </section>
+
+      <section class="mechanic" aria-label="Core mechanic">
+        <div>
+          <span>1</span>
+          <strong>Seal</strong>
+          <p>Write one clue and store it through the Filecoin flow.</p>
+        </div>
+        <div>
+          <span>2</span>
+          <strong>Share PieceCID</strong>
+          <p>The CID is the visible product object, not a hidden backend detail.</p>
+        </div>
+        <div>
+          <span>3</span>
+          <strong>Reveal</strong>
+          <p>Paste the PieceCID to retrieve and verify the clue.</p>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="panel" id="sealForm">
+          <div class="panel__head">
+            <p class="eyebrow">Create a drop</p>
+            <h2>Seal a clue</h2>
+          </div>
+
+          <label>
+            Drop title
+            <input
+              name="title"
+              value="Where the next builder badge waits"
+              maxlength="80"
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <label>
+            Clue
+            <textarea name="clue" maxlength="1200" required>The next clue is hidden where Filecoin builders turn an idea into a demo: follow the green banner, then look for the project with one clear mechanic.</textarea>
+          </label>
+
+          <label>
+            Reveal rule
+            <input
+              name="revealRule"
+              value="Only someone holding the PieceCID can reveal this dead drop."
+              maxlength="160"
+            />
+          </label>
+
+          <button type="submit" class="primary">Seal to Filecoin</button>
+        </form>
+
+        <section class="panel receipt" aria-live="polite">
+          <div class="panel__head">
+            <p class="eyebrow">Storage receipt</p>
+            <h2>PieceCID key</h2>
+          </div>
+          <div class="receipt__empty" id="emptyReceipt">
+            Seal a clue to generate the dead-drop key.
+          </div>
+          <div class="receipt__body hidden" id="receiptBody">
+            <dl>
+              <div>
+                <dt>Mode</dt>
+                <dd id="receiptMode">Mock</dd>
+              </div>
+              <div>
+                <dt>Copies</dt>
+                <dd id="receiptCopies">2</dd>
+              </div>
+              <div>
+                <dt>Sealed</dt>
+                <dd id="receiptTime">--</dd>
+              </div>
+            </dl>
+            <code id="pieceCid">--</code>
+            <button type="button" class="secondary" id="copyCid">Copy CID</button>
+          </div>
+        </section>
+
+        <form class="panel" id="revealForm">
+          <div class="panel__head">
+            <p class="eyebrow">Open a drop</p>
+            <h2>Reveal by PieceCID</h2>
+          </div>
+          <label>
+            PieceCID
+            <input name="pieceCid" id="revealCid" placeholder="Paste a PieceCID..." required />
+          </label>
+          <button type="submit" class="primary">Reveal clue</button>
+          <article class="reveal hidden" id="revealResult">
+            <p class="eyebrow">Retrieved payload</p>
+            <h3 id="dropTitle"></h3>
+            <p id="dropClue"></p>
+            <small id="dropMeta"></small>
+          </article>
+        </form>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
