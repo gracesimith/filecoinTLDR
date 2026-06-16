@@ -34,11 +34,15 @@ Mock mode is included so judges can test the full user experience without requir
 
 ## Live demo link
 
-TBD after deployment.
+https://gracesimith.github.io/filecoinTLDR/
 
 ## Repo link
 
-TBD after pushing to GitHub.
+https://github.com/gracesimith/filecoinTLDR
+
+## Demo video
+
+https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-dead-drop-demo.mp4
 
 ## Demo flow
 
@@ -66,7 +70,7 @@ Seal a clue -> share the PieceCID -> reveal it from Filecoin storage.
 
 The CID is the mechanic, not a hidden backend detail.
 
-Demo: {LIVE_DEMO_LINK}
-Repo: {REPO_LINK}
+Demo: https://gracesimith.github.io/filecoinTLDR/
+Repo: https://github.com/gracesimith/filecoinTLDR
 
 @Filecoin

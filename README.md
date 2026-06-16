@@ -23,6 +23,12 @@ Open `http://localhost:3000`.
 
 The app runs in mock mode by default so the full product flow works without testnet funds or a private key.
 
+## Live demo
+
+- App: https://gracesimith.github.io/filecoinTLDR/
+- Demo video: https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-dead-drop-demo.mp4
+- Repo: https://github.com/gracesimith/filecoinTLDR
+
 ## Use live Synapse SDK mode
 
 Install dependencies, then run with a Filecoin wallet private key that is funded/configured for Filecoin Onchain Cloud:
@@ -82,4 +88,4 @@ Main mechanic: Seal a clue, share the PieceCID, reveal the clue by PieceCID.
 
 Public X post draft:
 
-> I built Filecoin Dead Drop for @FilecoinTLDR Builder Challenge: seal a clue, share the PieceCID, reveal it from Filecoin storage. The CID is the product mechanic, not a hidden backend detail. Demo: {LIVE_DEMO_LINK} Repo: {REPO_LINK} @Filecoin
+> I built Filecoin Dead Drop for @FilecoinTLDR Builder Challenge: seal a clue, share the PieceCID, reveal it from Filecoin storage. The CID is the product mechanic, not a hidden backend detail. Demo: https://gracesimith.github.io/filecoinTLDR/ Repo: https://github.com/gracesimith/filecoinTLDR @Filecoin

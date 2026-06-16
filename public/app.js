@@ -17,6 +17,7 @@ const dropMeta = document.querySelector('#dropMeta');
 
 let currentCid = '';
 let toastTimer;
+const staticDrops = new Map();
 
 function showToast(message) {
   window.clearTimeout(toastTimer);
@@ -32,23 +33,69 @@ function setBusy(form, busy) {
 }
 
 async function api(path, body) {
-  const response = await fetch(path, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  const data = await response.json();
-  if (!response.ok || data.error) throw new Error(data.error || 'Request failed.');
-  return data;
+  try {
+    const response = await fetch(path, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    if (!response.ok || data.error) throw new Error(data.error || 'Request failed.');
+    return data;
+  } catch (error) {
+    if (location.hostname.endsWith('github.io')) return staticApi(path, body);
+    throw error;
+  }
 }
 
 async function loadStatus() {
-  const response = await fetch('/api/status');
-  const data = await response.json();
+  let data;
+  try {
+    const response = await fetch('/api/status');
+    data = await response.json();
+  } catch {
+    data = { mode: 'static' };
+  }
   modeStatus.textContent =
-    data.mode === 'synapse'
+    data.mode === 'static'
+      ? 'Static demo mode: GitHub Pages runs the same visible CID mechanic in-browser.'
+      : data.mode === 'synapse'
       ? 'Live Synapse mode: storing and retrieving through Filecoin Onchain Cloud.'
       : 'Demo mode: full flow works locally; add SYNAPSE_PRIVATE_KEY for live Filecoin storage.';
+}
+
+async function staticApi(path, body) {
+  if (path === '/api/seal') {
+    const drop = {
+      title: body.title || 'Untitled dead drop',
+      clue: body.clue || '',
+      revealRule: body.revealRule || 'Anyone with the PieceCID can reveal it.',
+      sealedAt: new Date().toISOString(),
+    };
+    const hash = await sha256Hex(JSON.stringify(drop));
+    const pieceCidValue = `static-piece-${hash.slice(0, 20)}`;
+    staticDrops.set(pieceCidValue, drop);
+    return {
+      mode: 'static',
+      pieceCid: pieceCidValue,
+      copies: 3,
+      sealedAt: drop.sealedAt,
+    };
+  }
+
+  if (path === '/api/reveal') {
+    const drop = staticDrops.get(body.pieceCid);
+    if (!drop) throw new Error('That PieceCID is not in this browser demo session.');
+    return { mode: 'static', drop };
+  }
+
+  throw new Error('Unknown API route.');
+}
+
+async function sha256Hex(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
 sealForm.querySelector('button[type="submit"]').dataset.label = 'Seal to Filecoin';
