@@ -28,6 +28,7 @@ The app runs in mock mode by default so the full product flow works without test
 - App: https://gracesimith.github.io/filecoinTLDR/
 - Demo video: https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-dead-drop-demo.mp4
 - Repo: https://github.com/gracesimith/filecoinTLDR
+- Public X post: https://x.com/gs197287/status/2066737467404013682
 
 ## Use live Synapse SDK mode
 
@@ -86,6 +87,6 @@ How it uses Filecoin / FOC: The product revolves around Synapse SDK storage. Sea
 
 Main mechanic: Seal a clue, share the PieceCID, reveal the clue by PieceCID.
 
-Public X post draft:
+Public X post:
 
-> I built Filecoin Dead Drop for @FilecoinTLDR Builder Challenge: seal a clue, share the PieceCID, reveal it from Filecoin storage. The CID is the product mechanic, not a hidden backend detail. Demo: https://gracesimith.github.io/filecoinTLDR/ Repo: https://github.com/gracesimith/filecoinTLDR @Filecoin
+https://x.com/gs197287/status/2066737467404013682

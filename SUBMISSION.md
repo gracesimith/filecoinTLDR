@@ -44,6 +44,10 @@ https://github.com/gracesimith/filecoinTLDR
 
 https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-dead-drop-demo.mp4
 
+## Public X post
+
+https://x.com/gs197287/status/2066737467404013682
+
 ## Demo flow
 
 1. Open Filecoin Dead Drop.
@@ -62,15 +66,13 @@ https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-
 - Added a Synapse SDK path for live FOC storage and a mock path for reliable judging demos.
 - Added smoke testing for the core seal/reveal loop.
 
-## Public X post draft
+## Public X post text
 
-I built Filecoin Dead Drop for the @FilecoinTLDR Builder Challenge.
+Filecoin Dead Drop for @FilecoinTLDR
 
 Seal a clue -> share the PieceCID -> reveal it from Filecoin storage.
 
-The CID is the mechanic, not a hidden backend detail.
-
-Demo: https://gracesimith.github.io/filecoinTLDR/
-Repo: https://github.com/gracesimith/filecoinTLDR
+Live https://gracesimith.github.io/filecoinTLDR/
+Video https://raw.githubusercontent.com/gracesimith/filecoinTLDR/main/assets/filecoin-dead-drop-demo.mp4
 
 @Filecoin
